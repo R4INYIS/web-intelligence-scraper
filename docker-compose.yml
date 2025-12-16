@@ -1,0 +1,55 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "midata"
+      MYSQL_USER: "r4inyis"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - backend
+
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - ./redis_data:/data
+    networks:
+      - backend
+
+      
+  python-worker:
+    build: ./python
+    # container_name: ELIMINADO para replicas
+    restart: unless-stopped
+    deploy:
+      replicas: 4
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1048M
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./python/app:/app
+    networks:
+      - backend
+      - frontend
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  frontend:
+    external: false
+  backend:
+    internal: true
