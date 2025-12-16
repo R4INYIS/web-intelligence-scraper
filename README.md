@@ -328,9 +328,9 @@ This tool is for educational and research purposes. Always:
 
 For issues and questions:
 
-- 🐛 [Open an Issue](https://github.com/yourusername/web-intelligence-scraper/issues)
-- 💬 [Join Discussions](https://github.com/yourusername/web-intelligence-scraper/discussions)
-- 📧 Email: your.email@example.com
+- 🐛 [Open an Issue](https://github.com/R4INYIS/web-intelligence-scraper/issues)
+- 💬 [Join Discussions](https://github.com/R4INYIS/web-intelligence-scraper/discussions)
+- 📧 Email: contacto@rainyisdev.cc
 
 ## 📈 Roadmap
 
@@ -357,3 +357,4 @@ Built with:
 **Made with ❤️ for data intelligence and web research**
 
 *Star ⭐ this repo if you find it useful!*
+
